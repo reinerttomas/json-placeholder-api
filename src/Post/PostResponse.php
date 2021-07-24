@@ -15,10 +15,7 @@ class PostResponse
 
     public function __construct(array $data)
     {
-        Arrays::checkIndexExists($data, 'id');
-        Arrays::checkIndexExists($data, 'userId');
-        Arrays::checkIndexExists($data, 'title');
-        Arrays::checkIndexExists($data, 'body');
+        $this->checkResponse($data);
 
         $this->id = Parser::parseInt($data['id']);
         $this->userId = Parser::parseInt($data['userId']);
@@ -44,5 +41,13 @@ class PostResponse
     public function getBody(): string
     {
         return $this->body;
+    }
+
+    private function checkResponse(array $data): void
+    {
+        Arrays::checkIndexExists($data, 'id');
+        Arrays::checkIndexExists($data, 'userId');
+        Arrays::checkIndexExists($data, 'title');
+        Arrays::checkIndexExists($data, 'body');
     }
 }
