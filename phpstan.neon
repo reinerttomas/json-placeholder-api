@@ -18,6 +18,9 @@ parameters:
         - src
         - tests
 
+    # https://phpstan.org/config-reference#vague-typehints
+    checkMissingIterableValueType: false
+
     # It's a special "dev" project, I have to ignore the following warnings because
     # the use of this functions is intended.
     # @see https://phpstan.org/user-guide/ignoring-errors

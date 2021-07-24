@@ -161,14 +161,14 @@
     <rule ref="SlevomatCodingStandard.PHP.ShortList" />
     <rule ref="SlevomatCodingStandard.PHP.TypeCast" />
     <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces" />
-    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
-        <properties>
-            <property name="rootNamespaces" type="array">
-                <element key="src" value="Reinerttomas\JsonPlaceholderApi\"/>
-                <element key="tests" value="App\Tests"/>
-            </property>
-        </properties>
-    </rule>
+<!--    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">-->
+<!--        <properties>-->
+<!--            <property name="rootNamespaces" type="array">-->
+<!--                <element key="src" value="ReinertTomas\JsonPlaceholderApi\"/>-->
+<!--                <element key="tests" value="App\Tests"/>-->
+<!--            </property>-->
+<!--        </properties>-->
+<!--    </rule>-->
     <rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility" />
     <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing" />
     <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue" />
