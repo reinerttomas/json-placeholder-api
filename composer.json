@@ -1,0 +1,20 @@
+{
+    "name": "reinerttomas/json-placeholder-api",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Reinerttomas\\JsonPlaceholderApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tomas Reinert",
+            "email": "reinerttomas@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0"
+    }
+}
