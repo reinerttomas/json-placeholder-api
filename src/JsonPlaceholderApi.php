@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ReinertTomas\JsonPlaceholderApi;
 
 use JetBrains\PhpStorm\Pure;
+use ReinertTomas\JsonPlaceholderApi\Album\Album;
 use ReinertTomas\JsonPlaceholderApi\Comment\Comment;
 use ReinertTomas\JsonPlaceholderApi\Post\Post;
 use ReinertTomas\JsonPlaceholderApi\User\User;
@@ -16,6 +17,12 @@ final class JsonPlaceholderApi
     public function __construct(array $httpApiConfig)
     {
         $this->jsonPlaceholderClient = new JsonPlaceholderClient($httpApiConfig['base_uri']);
+    }
+
+    #[Pure]
+    public function album(): Album
+    {
+        return new Album($this->jsonPlaceholderClient);
     }
 
     #[Pure]
