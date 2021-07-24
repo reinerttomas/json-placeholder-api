@@ -5,6 +5,7 @@ namespace ReinertTomas\JsonPlaceholderApi;
 
 use JetBrains\PhpStorm\Pure;
 use ReinertTomas\JsonPlaceholderApi\Post\Post;
+use ReinertTomas\JsonPlaceholderApi\User\User;
 
 final class JsonPlaceholderApi
 {
@@ -20,5 +21,11 @@ final class JsonPlaceholderApi
     public function post(): Post
     {
         return new Post($this->jsonPlaceholderClient);
+    }
+
+    #[Pure]
+    public function user(): User
+    {
+        return new User($this->jsonPlaceholderClient);
     }
 }
