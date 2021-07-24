@@ -39,7 +39,7 @@ class User
 
         if ($response->getStatusCode() !== 200) {
             throw new Exception(
-                sprintf('Error user list. Status code %d', $response->getStatusCode()),
+                sprintf('Error list user. Status code %d', $response->getStatusCode()),
             );
         }
 
