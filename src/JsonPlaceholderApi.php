@@ -6,6 +6,7 @@ namespace ReinertTomas\JsonPlaceholderApi;
 use JetBrains\PhpStorm\Pure;
 use ReinertTomas\JsonPlaceholderApi\Album\Album;
 use ReinertTomas\JsonPlaceholderApi\Comment\Comment;
+use ReinertTomas\JsonPlaceholderApi\Photo\Photo;
 use ReinertTomas\JsonPlaceholderApi\Post\Post;
 use ReinertTomas\JsonPlaceholderApi\User\User;
 
@@ -35,6 +36,12 @@ final class JsonPlaceholderApi
     public function post(): Post
     {
         return new Post($this->jsonPlaceholderClient);
+    }
+
+    #[Pure]
+    public function photo(): Photo
+    {
+        return new Photo($this->jsonPlaceholderClient);
     }
 
     #[Pure]
