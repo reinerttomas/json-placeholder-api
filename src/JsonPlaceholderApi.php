@@ -8,6 +8,7 @@ use ReinertTomas\JsonPlaceholderApi\Album\Album;
 use ReinertTomas\JsonPlaceholderApi\Comment\Comment;
 use ReinertTomas\JsonPlaceholderApi\Photo\Photo;
 use ReinertTomas\JsonPlaceholderApi\Post\Post;
+use ReinertTomas\JsonPlaceholderApi\Todo\Todo;
 use ReinertTomas\JsonPlaceholderApi\User\User;
 
 final class JsonPlaceholderApi
@@ -42,6 +43,12 @@ final class JsonPlaceholderApi
     public function photo(): Photo
     {
         return new Photo($this->jsonPlaceholderClient);
+    }
+
+    #[Pure]
+    public function todo(): Todo
+    {
+        return new Todo($this->jsonPlaceholderClient);
     }
 
     #[Pure]
