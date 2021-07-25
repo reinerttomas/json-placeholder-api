@@ -31,12 +31,12 @@ class UserResponse
         $this->checkCompany($company);
 
         $this->id = Parser::parseInt($data['id']);
-        $this->name = $data['name'];
-        $this->username = $data['username'];
-        $this->email = $data['email'];
+        $this->name = Parser::parseString($data['name']);
+        $this->username = Parser::parseString($data['username']);
+        $this->email = Parser::parseString($data['email']);
         $this->setAddress($address);
-        $this->phone = $data['phone'];
-        $this->website = $data['website'];
+        $this->phone = Parser::parseString($data['phone']);
+        $this->website = Parser::parseString($data['website']);
         $this->setCompany($company);
     }
 
@@ -121,10 +121,10 @@ class UserResponse
         );
 
         $this->address = new Address(
-            $data['street'],
-            $data['suite'],
-            $data['city'],
-            $data['zipcode'],
+            Parser::parseString($data['street']),
+            Parser::parseString($data['suite']),
+            Parser::parseString($data['city']),
+            Parser::parseString($data['zipcode']),
             $geolocation,
         );
     }
@@ -132,9 +132,9 @@ class UserResponse
     private function setCompany(array $data): void
     {
         $this->company = new Company(
-            $data['name'],
-            $data['catchPhrase'],
-            $data['bs'],
+            Parser::parseString($data['name']),
+            Parser::parseString($data['catchPhrase']),
+            Parser::parseString($data['bs']),
         );
     }
 }

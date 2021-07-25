@@ -20,9 +20,9 @@ class CommentResponse
 
         $this->id = Parser::parseInt($data['id']);
         $this->postId = Parser::parseInt($data['postId']);
-        $this->name = $data['name'];
-        $this->email = $data['email'];
-        $this->body = $data['body'];
+        $this->name = Parser::parseString($data['name']);
+        $this->email = Parser::parseString($data['email']);
+        $this->body = Parser::parseString($data['body']);
     }
 
     public function getId(): int

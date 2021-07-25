@@ -20,9 +20,9 @@ class PhotoResponse
 
         $this->id = Parser::parseInt($data['id']);
         $this->albumId = Parser::parseInt($data['albumId']);
-        $this->title = $data['title'];
-        $this->url = $data['url'];
-        $this->thumbnailUrl = $data['thumbnailUrl'];
+        $this->title = Parser::parseString($data['title']);
+        $this->url = Parser::parseString($data['url']);
+        $this->thumbnailUrl = Parser::parseString($data['thumbnailUrl']);
     }
 
     public function getId(): int

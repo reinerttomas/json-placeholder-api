@@ -18,7 +18,7 @@ class AlbumResponse
 
         $this->id = Parser::parseInt($data['id']);
         $this->userId = Parser::parseInt($data['userId']);
-        $this->title = $data['title'];
+        $this->title = Parser::parseString($data['title']);
     }
 
     public function getId(): int
