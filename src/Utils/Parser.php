@@ -48,6 +48,19 @@ class Parser
         return (float)$string;
     }
 
+    public static function parseBoolean(mixed $string): bool
+    {
+        if ($string === null) {
+            throw new Exception('Value cannot be null.');
+        }
+
+        if ($string === '') {
+            throw new Exception('Value cannot be null empty string.');
+        }
+
+        return (bool)$string;
+    }
+
     public static function parseStringOrNull(?string $string): ?string
     {
         if ($string === null) {
