@@ -30,6 +30,9 @@ class Comment
         return new CommentResponse($response->toArray());
     }
 
+    /**
+     * @return array<int, CommentResponse>
+     */
     public function list(): array
     {
         /** @var array<int, CommentResponse> $commentResponses */

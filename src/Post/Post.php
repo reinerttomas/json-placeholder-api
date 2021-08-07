@@ -30,6 +30,9 @@ class Post
         return new PostResponse($response->toArray());
     }
 
+    /**
+     * @return array<int, PostResponse>
+     */
     public function list(): array
     {
         /** @var array<int, PostResponse> $postResponses */

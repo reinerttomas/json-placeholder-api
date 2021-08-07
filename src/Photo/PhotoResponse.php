@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace ReinertTomas\JsonPlaceholderApi\Photo;
 
-use ReinertTomas\JsonPlaceholderApi\Utils\Arrays;
-use ReinertTomas\JsonPlaceholderApi\Utils\Parser;
+use ReinertTomas\Utils\Arrays;
 
 class PhotoResponse
 {
@@ -16,13 +15,17 @@ class PhotoResponse
 
     public function __construct(array $data)
     {
-        $this->checkResponse($data);
+        Arrays::keyExistsThrowable($data, 'id');
+        Arrays::keyExistsThrowable($data, 'albumId');
+        Arrays::keyExistsThrowable($data, 'title');
+        Arrays::keyExistsThrowable($data, 'url');
+        Arrays::keyExistsThrowable($data, 'thumbnailUrl');
 
-        $this->id = Parser::parseInt($data['id']);
-        $this->albumId = Parser::parseInt($data['albumId']);
-        $this->title = Parser::parseString($data['title']);
-        $this->url = Parser::parseString($data['url']);
-        $this->thumbnailUrl = Parser::parseString($data['thumbnailUrl']);
+        $this->id = $data['id'];
+        $this->albumId = $data['albumId'];
+        $this->title = $data['title'];
+        $this->url = $data['url'];
+        $this->thumbnailUrl = $data['thumbnailUrl'];
     }
 
     public function getId(): int
@@ -48,14 +51,5 @@ class PhotoResponse
     public function getThumbnailUrl(): string
     {
         return $this->thumbnailUrl;
-    }
-
-    private function checkResponse(array $data): void
-    {
-        Arrays::checkIndexExists($data, 'id');
-        Arrays::checkIndexExists($data, 'albumId');
-        Arrays::checkIndexExists($data, 'title');
-        Arrays::checkIndexExists($data, 'url');
-        Arrays::checkIndexExists($data, 'thumbnailUrl');
     }
 }

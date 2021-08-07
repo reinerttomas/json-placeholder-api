@@ -3,10 +3,14 @@
     "type": "library",
     "license": "MIT",
     "autoload": {
-        "psr-4": { "ReinertTomas\\JsonPlaceholderApi\\": "src/" },
-        "exclude-from-classmap": [
-            "/tests/"
-        ]
+        "psr-4": {
+            "ReinertTomas\\JsonPlaceholderApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ReinertTomas\\JsonPlaceholderApi\\Tests\\": "tests/"
+        }
     },
     "authors": [
         {
@@ -17,6 +21,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.0",
+        "reinerttomas/utils": "^0.1.0",
         "guzzlehttp/guzzle": "^7.3"
     },
     "require-dev": {

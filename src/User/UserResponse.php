@@ -6,8 +6,7 @@ namespace ReinertTomas\JsonPlaceholderApi\User;
 use ReinertTomas\JsonPlaceholderApi\User\Attribute\Address;
 use ReinertTomas\JsonPlaceholderApi\User\Attribute\Company;
 use ReinertTomas\JsonPlaceholderApi\User\Attribute\Geolocation;
-use ReinertTomas\JsonPlaceholderApi\Utils\Arrays;
-use ReinertTomas\JsonPlaceholderApi\Utils\Parser;
+use ReinertTomas\Utils\Arrays;
 
 class UserResponse
 {
@@ -22,22 +21,22 @@ class UserResponse
 
     public function __construct(array $data)
     {
-        $this->checkResponse($data);
+        $this->check($data);
 
-        $address = $data['address'];
-        $company = $data['company'];
+        $addressArray = $data['address'];
+        $companyArray = $data['company'];
 
-        $this->checkAddress($address);
-        $this->checkCompany($company);
+        $this->checkAddress($addressArray);
+        $this->checkCompany($companyArray);
 
-        $this->id = Parser::parseInt($data['id']);
-        $this->name = Parser::parseString($data['name']);
-        $this->username = Parser::parseString($data['username']);
-        $this->email = Parser::parseString($data['email']);
-        $this->setAddress($address);
-        $this->phone = Parser::parseString($data['phone']);
-        $this->website = Parser::parseString($data['website']);
-        $this->setCompany($company);
+        $this->id = $data['id'];
+        $this->name = $data['name'];
+        $this->username = $data['username'];
+        $this->email = $data['email'];
+        $this->setAddress($addressArray);
+        $this->phone = $data['phone'];
+        $this->website = $data['website'];
+        $this->setCompany($companyArray);
     }
 
     public function getId(): int
@@ -80,61 +79,61 @@ class UserResponse
         return $this->company;
     }
 
-    private function checkResponse(array $data): void
+    private function check(array $data): void
     {
-        Arrays::checkIndexExists($data, 'id');
-        Arrays::checkIndexExists($data, 'name');
-        Arrays::checkIndexExists($data, 'username');
-        Arrays::checkIndexExists($data, 'email');
-        Arrays::checkIndexExists($data, 'address');
-        Arrays::checkIndexExists($data, 'phone');
-        Arrays::checkIndexExists($data, 'website');
-        Arrays::checkIndexExists($data, 'company');
+        Arrays::keyExistsThrowable($data, 'id');
+        Arrays::keyExistsThrowable($data, 'name');
+        Arrays::keyExistsThrowable($data, 'username');
+        Arrays::keyExistsThrowable($data, 'email');
+        Arrays::keyExistsThrowable($data, 'address');
+        Arrays::keyExistsThrowable($data, 'phone');
+        Arrays::keyExistsThrowable($data, 'website');
+        Arrays::keyExistsThrowable($data, 'company');
     }
 
-    private function checkAddress(array $data): void
+    private function checkAddress(array $address): void
     {
-        Arrays::checkIndexExists($data, 'street');
-        Arrays::checkIndexExists($data, 'suite');
-        Arrays::checkIndexExists($data, 'city');
-        Arrays::checkIndexExists($data, 'zipcode');
-        Arrays::checkIndexExists($data, 'geo');
+        Arrays::keyExistsThrowable($address, 'street');
+        Arrays::keyExistsThrowable($address, 'suite');
+        Arrays::keyExistsThrowable($address, 'city');
+        Arrays::keyExistsThrowable($address, 'zipcode');
+        Arrays::keyExistsThrowable($address, 'geo');
 
-        $geolocation = $data['geo'];
+        $geolocation = $address['geo'];
 
-        Arrays::checkIndexExists($geolocation, 'lat');
-        Arrays::checkIndexExists($geolocation, 'lng');
+        Arrays::keyExistsThrowable($geolocation, 'lat');
+        Arrays::keyExistsThrowable($geolocation, 'lng');
     }
 
-    private function checkCompany(array $data): void
+    private function checkCompany(array $company): void
     {
-        Arrays::checkIndexExists($data, 'name');
-        Arrays::checkIndexExists($data, 'catchPhrase');
-        Arrays::checkIndexExists($data, 'bs');
+        Arrays::keyExistsThrowable($company, 'name');
+        Arrays::keyExistsThrowable($company, 'catchPhrase');
+        Arrays::keyExistsThrowable($company, 'bs');
     }
 
-    private function setAddress(array $data): void
+    private function setAddress(array $address): void
     {
         $geolocation = new Geolocation(
-            Parser::parseFloat($data['geo']['lat']),
-            Parser::parseFloat($data['geo']['lng']),
+            $address['geo']['lat'],
+            $address['geo']['lng'],
         );
 
         $this->address = new Address(
-            Parser::parseString($data['street']),
-            Parser::parseString($data['suite']),
-            Parser::parseString($data['city']),
-            Parser::parseString($data['zipcode']),
+            $address['street'],
+            $address['suite'],
+            $address['city'],
+            $address['zipcode'],
             $geolocation,
         );
     }
 
-    private function setCompany(array $data): void
+    private function setCompany(array $company): void
     {
         $this->company = new Company(
-            Parser::parseString($data['name']),
-            Parser::parseString($data['catchPhrase']),
-            Parser::parseString($data['bs']),
+            $company['name'],
+            $company['catchPhrase'],
+            $company['bs'],
         );
     }
 }

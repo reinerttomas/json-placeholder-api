@@ -30,6 +30,9 @@ class Todo
         return new TodoResponse($response->toArray());
     }
 
+    /**
+     * @return array<int, TodoResponse>
+     */
     public function list(): array
     {
         /** @var array<int, TodoResponse> $todoResponses */

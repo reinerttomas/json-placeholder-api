@@ -30,6 +30,9 @@ class Photo
         return new PhotoResponse($response->toArray());
     }
 
+    /**
+     * @return array<int, PhotoResponse>
+     */
     public function list(): array
     {
         /** @var array<int, PhotoResponse> $photoResponses */

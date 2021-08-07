@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace ReinertTomas\JsonPlaceholderApi\Post;
 
-use ReinertTomas\JsonPlaceholderApi\Utils\Arrays;
-use ReinertTomas\JsonPlaceholderApi\Utils\Parser;
+use ReinertTomas\Utils\Arrays;
 
 class PostResponse
 {
@@ -15,12 +14,15 @@ class PostResponse
 
     public function __construct(array $data)
     {
-        $this->checkResponse($data);
+        Arrays::keyExistsThrowable($data, 'id');
+        Arrays::keyExistsThrowable($data, 'userId');
+        Arrays::keyExistsThrowable($data, 'title');
+        Arrays::keyExistsThrowable($data, 'body');
 
-        $this->id = Parser::parseInt($data['id']);
-        $this->userId = Parser::parseInt($data['userId']);
-        $this->title = Parser::parseString($data['title']);
-        $this->body = Parser::parseString($data['body']);
+        $this->id = $data['id'];
+        $this->userId = $data['userId'];
+        $this->title = $data['title'];
+        $this->body = $data['body'];
     }
 
     public function getId(): int
@@ -41,13 +43,5 @@ class PostResponse
     public function getBody(): string
     {
         return $this->body;
-    }
-
-    private function checkResponse(array $data): void
-    {
-        Arrays::checkIndexExists($data, 'id');
-        Arrays::checkIndexExists($data, 'userId');
-        Arrays::checkIndexExists($data, 'title');
-        Arrays::checkIndexExists($data, 'body');
     }
 }

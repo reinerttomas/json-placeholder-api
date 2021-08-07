@@ -30,6 +30,9 @@ class Album
         return new AlbumResponse($response->toArray());
     }
 
+    /**
+     * @return array<int, AlbumResponse>
+     */
     public function list(): array
     {
         /** @var array<int, AlbumResponse> $albumResponses */

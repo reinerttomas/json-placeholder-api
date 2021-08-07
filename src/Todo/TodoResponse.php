@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace ReinertTomas\JsonPlaceholderApi\Todo;
 
-use ReinertTomas\JsonPlaceholderApi\Utils\Arrays;
-use ReinertTomas\JsonPlaceholderApi\Utils\Parser;
+use ReinertTomas\Utils\Arrays;
 
 class TodoResponse
 {
@@ -15,12 +14,15 @@ class TodoResponse
 
     public function __construct(array $data)
     {
-        $this->checkResponse($data);
+        Arrays::keyExistsThrowable($data, 'id');
+        Arrays::keyExistsThrowable($data, 'userId');
+        Arrays::keyExistsThrowable($data, 'title');
+        Arrays::keyExistsThrowable($data, 'completed');
 
-        $this->id = Parser::parseInt($data['id']);
-        $this->userId = Parser::parseInt($data['userId']);
-        $this->title = Parser::parseString($data['title']);
-        $this->completed = Parser::parseBoolean($data['completed']);
+        $this->id = $data['id'];
+        $this->userId = $data['userId'];
+        $this->title = $data['title'];
+        $this->completed = $data['completed'];
     }
 
     public function getId(): int
@@ -41,13 +43,5 @@ class TodoResponse
     public function isCompleted(): bool
     {
         return $this->completed;
-    }
-
-    private function checkResponse(array $data): void
-    {
-        Arrays::checkIndexExists($data, 'id');
-        Arrays::checkIndexExists($data, 'userId');
-        Arrays::checkIndexExists($data, 'title');
-        Arrays::checkIndexExists($data, 'completed');
     }
 }

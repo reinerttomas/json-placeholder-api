@@ -30,6 +30,9 @@ class User
         return new UserResponse($response->toArray());
     }
 
+    /**
+     * @return array<int, UserResponse>
+     */
     public function list(): array
     {
         /** @var array<int, UserResponse> $userResponses */

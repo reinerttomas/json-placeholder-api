@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace ReinertTomas\JsonPlaceholderApi\Comment;
 
-use ReinertTomas\JsonPlaceholderApi\Utils\Arrays;
-use ReinertTomas\JsonPlaceholderApi\Utils\Parser;
+use ReinertTomas\Utils\Arrays;
 
 class CommentResponse
 {
@@ -16,13 +15,17 @@ class CommentResponse
 
     public function __construct(array $data)
     {
-        $this->checkResponse($data);
+        Arrays::keyExistsThrowable($data, 'id');
+        Arrays::keyExistsThrowable($data, 'postId');
+        Arrays::keyExistsThrowable($data, 'name');
+        Arrays::keyExistsThrowable($data, 'email');
+        Arrays::keyExistsThrowable($data, 'body');
 
-        $this->id = Parser::parseInt($data['id']);
-        $this->postId = Parser::parseInt($data['postId']);
-        $this->name = Parser::parseString($data['name']);
-        $this->email = Parser::parseString($data['email']);
-        $this->body = Parser::parseString($data['body']);
+        $this->id = $data['id'];
+        $this->postId = $data['postId'];
+        $this->name = $data['name'];
+        $this->email = $data['email'];
+        $this->body = $data['body'];
     }
 
     public function getId(): int
@@ -48,14 +51,5 @@ class CommentResponse
     public function getBody(): string
     {
         return $this->body;
-    }
-
-    private function checkResponse(array $data): void
-    {
-        Arrays::checkIndexExists($data, 'id');
-        Arrays::checkIndexExists($data, 'postId');
-        Arrays::checkIndexExists($data, 'name');
-        Arrays::checkIndexExists($data, 'email');
-        Arrays::checkIndexExists($data, 'body');
     }
 }
