@@ -115,8 +115,8 @@ class UserResponse
     private function setAddress(array $address): void
     {
         $geolocation = new Geolocation(
-            $address['geo']['lat'],
-            $address['geo']['lng'],
+            (float)$address['geo']['lat'],
+            (float)$address['geo']['lng'],
         );
 
         $this->address = new Address(
