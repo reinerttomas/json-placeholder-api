@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ReinertTomas\JsonPlaceholderApi\Tests\Album;
+namespace ReinertTomas\JsonPlaceholderApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use ReinertTomas\JsonPlaceholderApi\Album\AlbumResponse;

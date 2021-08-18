@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ReinertTomas\JsonPlaceholderApi\Tests\Comment;
+namespace ReinertTomas\JsonPlaceholderApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use ReinertTomas\JsonPlaceholderApi\Comment\CommentResponse;

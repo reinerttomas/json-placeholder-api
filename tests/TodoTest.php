@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ReinertTomas\JsonPlaceholderApi\Tests\Todo;
+namespace ReinertTomas\JsonPlaceholderApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use ReinertTomas\JsonPlaceholderApi\Todo\TodoResponse;

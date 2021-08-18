@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ReinertTomas\JsonPlaceholderApi\Tests\Post;
+namespace ReinertTomas\JsonPlaceholderApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use ReinertTomas\JsonPlaceholderApi\Post\PostResponse;
