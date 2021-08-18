@@ -1,6 +1,6 @@
 {
     "name": "reinerttomas/json-placeholder-api",
-    "description": "Free fake API for testing and prototyping.",
+    "description": "PHP library for JSONPlaceholder. Free fake API for testing and prototyping.",
     "type": "library",
     "license": "MIT",
     "autoload": {
