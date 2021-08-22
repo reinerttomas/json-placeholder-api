@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  webserver:
+    image: reinerttomas/php:8.0-apache-dev
+    container_name: json-placeholder-api
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "8080:80"
