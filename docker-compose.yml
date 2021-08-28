@@ -5,6 +5,6 @@ services:
     image: reinerttomas/php:8.0-apache-dev
     container_name: json-placeholder-api
     ports:
-      - "8080:80"
+      - "8082:80"
     volumes:
       - .:/var/www/html/
